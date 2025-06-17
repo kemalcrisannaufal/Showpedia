@@ -1,17 +1,13 @@
+import AppShell from "@/components/common/AppShell/AppShell";
 import "@/styles/globals.css";
-import { cn } from "@/utils/cn";
 import type { AppProps } from "next/app";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={cn(inter.className)}>
+    <AppShell>
       <Component {...pageProps} />
-    </main>
+    </AppShell>
   );
 }

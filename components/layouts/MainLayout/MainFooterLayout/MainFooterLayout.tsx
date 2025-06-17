@@ -14,7 +14,7 @@ const MainFooterLayout = () => {
           width={75}
           height={75}
         />
-        <span className="font-semibold text-3xl tracking-wide">Ulasin</span>
+        <span className="font-semibold text-3xl tracking-wide">Showpedia</span>
       </Link>
 
       <div>

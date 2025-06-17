@@ -16,7 +16,7 @@ const MainNavbarDrawer = (props: Proptypes) => {
       initial={{ x: "-100%" }}
       animate={{ x: 0, transition: { duration: 0.5 } }}
       exit={{ x: "-100%", transition: { duration: 0.5 } }}
-      className="lg:hidden fixed inset-0 bg-red-600 p-10 w-[80%] h-screen text-white"
+      className="lg:hidden z-50 fixed inset-0 bg-red-600 p-10 w-[80%] h-screen text-white"
     >
       <Link
         href="/"

@@ -14,15 +14,17 @@ const MainNavbarLayout = () => {
   return (
     <div className="flex justify-between items-center px-5 md:px-10 w-full h-16 text-red-600">
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-5 lg:w-1/3">
-        <Image
-          src={"/images/general/logo.svg"}
-          alt="logo"
-          width={50}
-          height={50}
-        />
-        <span className="font-semibold text-xl tracking-wide">Ulasin</span>
-      </Link>
+      <div className="flex items-center gap-5 lg:w-1/3">
+        <Link href="/">
+          <Image
+            src={"/images/general/logo.svg"}
+            alt="logo"
+            width={50}
+            height={50}
+          />
+        </Link>
+        <span className="font-semibold text-xl tracking-wide">Showpedia</span>
+      </div>
 
       {/* Search */}
       <div className="hidden lg:flex items-center bg-white px-4 py-1 border-2 border-red-600 rounded-full w-1/3">
