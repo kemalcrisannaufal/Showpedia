@@ -1,7 +1,7 @@
 import { ITVShow } from "@/types/tvshow.type";
-import Modal from "../../Modal/Modal";
+import Modal from "../../ui/Modal/Modal";
 import Image from "next/image";
-import Button from "../../Button";
+import Button from "../../ui/Button";
 
 interface Proptypes {
   tvShow: ITVShow;

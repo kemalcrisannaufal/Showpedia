@@ -1,7 +1,9 @@
 import instance from "@/lib/axios/instance";
 
 const homeServices = {
-  getPopularShow: () => instance.get("https://api.tvmaze.com/shows?page=0"),
+  getShowById: (id: string) => instance.get(`/shows/${id}`),
+  getScheduleByCountry: (country: string) =>
+    instance.get(`/schedule?country=${country}`),
 };
 
 export default homeServices;

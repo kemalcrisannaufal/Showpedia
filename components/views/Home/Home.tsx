@@ -1,23 +1,26 @@
-import TVShowCard from "@/components/ui/TVShowCard";
-import useHome from "./useHome";
+import { SHOWPEDIA_PICK } from "./Home.constants";
+import HomeList from "./HomeList";
 import HomeSlider from "./HomeSlider";
+import useHome from "./useHome";
+import HomeScheduleList from "./HomeScheduleList";
 
 const Home = () => {
-  const { dataPopularShow, isPendingPopularShow } = useHome();
+  const { dataSchedule, isLoadingSchedule } = useHome();
+  console.log(dataSchedule);
   return (
-    <>
+    <div>
       <HomeSlider />
-
-      <div className="grid grid-cols-2 lg:grid-cols-9">
-        {dataPopularShow?.map((item, index) => (
-          <TVShowCard
-            key={index}
-            isLoading={isPendingPopularShow}
-            tvShow={item}
-          />
-        ))}
-      </div>
-    </>
+      <HomeList
+        data={SHOWPEDIA_PICK}
+        isLoading={false}
+        title="Showpedia Pick"
+      />
+      <HomeSlider reverse />
+      <HomeScheduleList
+        dataSchedule={dataSchedule!}
+        isLoading={isLoadingSchedule}
+      />
+    </div>
   );
 };
 

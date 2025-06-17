@@ -8,7 +8,7 @@ const PageHead = (props: Proptypes) => {
   const { title } = props;
   return (
     <Head>
-      <title>Ulasin | {title}</title>
+      <title>Showpedia | {title}</title>
     </Head>
   );
 };

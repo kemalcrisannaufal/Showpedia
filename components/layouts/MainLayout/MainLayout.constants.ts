@@ -14,12 +14,12 @@ const NAV_ITEMS = [
     href: "/",
   },
   {
-    label: "Schedule",
-    href: "/schedule",
+    label: "Shows",
+    href: "/shows",
   },
   {
-    label: "Favorite",
-    href: "/favorite",
+    label: "Schedule",
+    href: "/schedule",
   },
 ];
 

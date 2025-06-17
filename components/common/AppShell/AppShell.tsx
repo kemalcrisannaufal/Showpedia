@@ -20,7 +20,7 @@ const AppShell = (props: Proptypes) => {
   const { children } = props;
   return (
     <QueryClientProvider client={queryClient}>
-      <main className={cn(inter.className)}>{children}</main>
+      <main className={cn(inter.className, "bg-white")}>{children}</main>
     </QueryClientProvider>
   );
 };
