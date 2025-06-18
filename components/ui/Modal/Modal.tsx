@@ -19,12 +19,14 @@ const Modal = (props: Proptypes) => {
       >
         {children}
         <button
-          className="top-2 right-2 absolute hover:bg-gray-300/75 p-1 rounded-full transition-all duration-300 ease-in-out cursor-pointer"
+          className="top-1 right-1 absolute hover:bg-gray-300/75 p-1 rounded-full transition-all duration-300 ease-in-out cursor-pointer"
           onClick={onClose}
           aria-label="close modal"
         >
           <FiX className="text-xl" />
         </button>
+
+        <div className="md:hidden bg-red-600 h-12" />
       </motion.div>
     </div>
   );

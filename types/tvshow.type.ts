@@ -55,6 +55,7 @@ interface ITVShow {
       name: string | null;
     };
   } | null;
+  _embedded: { episodes: IEpisode[] } | null;
 }
 
 interface IScheduleTVShow {
@@ -77,4 +78,34 @@ interface IScheduleTVShow {
   show: ITVShow;
 }
 
-export type { ITVShow, IScheduleTVShow };
+interface IEpisode {
+  id: number;
+  url: string;
+  name: string;
+  season: number;
+  number: number;
+  type: string;
+  airdate: string;
+  airtime: string;
+  airstamp: string;
+  runtime: string;
+  rating: {
+    average: number;
+  };
+  image: {
+    medium: string;
+    original: string;
+  };
+  summary: string;
+  __links: {
+    self: {
+      href: string;
+    };
+    show: {
+      href: string;
+      name: string;
+    };
+  };
+}
+
+export type { ITVShow, IScheduleTVShow, IEpisode };

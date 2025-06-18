@@ -1,4 +1,4 @@
-import homeServices from "@/services/home.services";
+import mainServices from "@/services/main.services";
 import { IScheduleTVShow, ITVShow } from "@/types/tvshow.type";
 import { useQuery } from "@tanstack/react-query";
 import { POPULAR_IDS } from "./Home.constants";
@@ -6,7 +6,7 @@ import { POPULAR_IDS } from "./Home.constants";
 const useHome = () => {
   const getShowpediaPicked = async (): Promise<ITVShow[]> => {
     const request = POPULAR_IDS.map((id) =>
-      homeServices.getShowById(id.toString())
+      mainServices.getShowById(id.toString())
     );
     const responses = await Promise.all(request);
     const data = responses.map((res) => res.data);
@@ -21,7 +21,7 @@ const useHome = () => {
     });
 
   const getScheduleByCountry = async (): Promise<IScheduleTVShow[]> => {
-    const { data } = await homeServices.getScheduleByCountry("KR");
+    const { data } = await mainServices.getScheduleByCountry("KR");
     return data;
   };
 

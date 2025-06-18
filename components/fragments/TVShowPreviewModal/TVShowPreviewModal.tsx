@@ -2,6 +2,7 @@ import { ITVShow } from "@/types/tvshow.type";
 import Modal from "../../ui/Modal/Modal";
 import Image from "next/image";
 import Button from "../../ui/Button";
+import { useRouter } from "next/router";
 
 interface Proptypes {
   tvShow: ITVShow;
@@ -10,11 +11,12 @@ interface Proptypes {
 
 const TVShowPreviewModal = (props: Proptypes) => {
   const { tvShow, onClose } = props;
+  const { push } = useRouter();
   return (
     <Modal onClose={onClose}>
       <div className="flex gap-5 p-5">
         <Image
-          src={tvShow.image.original}
+          src={`${tvShow.image?.original}`}
           alt={tvShow.name}
           width={500}
           height={500}
@@ -24,7 +26,7 @@ const TVShowPreviewModal = (props: Proptypes) => {
           <div className="flex-grow">
             <h2 className="font-semibold text-2xl">{tvShow.name}</h2>
             <div className="flex flex-wrap items-center gap-1 mt-1.5">
-              {tvShow.genres.map((genre, index) => (
+              {tvShow.genres?.map((genre, index) => (
                 <div
                   key={index}
                   className="bg-red-200/50 px-2 py-1 border rounded-md font-medium text-red-600 text-xs"
@@ -34,13 +36,18 @@ const TVShowPreviewModal = (props: Proptypes) => {
               ))}
             </div>
             <p
-              dangerouslySetInnerHTML={{ __html: tvShow.summary }}
+              dangerouslySetInnerHTML={{ __html: `${tvShow.summary}` }}
               className="mt-3 text-neutral-700 text-xs md:text-sm line-clamp-4 md:line-clamp-3 leading-relaxed"
             />
           </div>
 
           <div className="flex justify-end mt-2">
-            <Button classname="text-xs md:text-base">Read More</Button>
+            <Button
+              classname="text-xs md:text-base"
+              onClick={() => push(`/shows/${tvShow.id}`)}
+            >
+              Read More
+            </Button>
           </div>
         </div>
       </div>

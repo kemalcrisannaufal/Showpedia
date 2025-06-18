@@ -16,7 +16,7 @@ const ScheduleCard = (props: Proptypes) => {
   return (
     <>
       {!isLoading ? (
-        <div className="shadow-md p-2 border border-gray-300 rounded-md">
+        <div className="bg-red-100/10 shadow-md p-2 border-2 border-red-300 rounded-md">
           <div className="flex gap-5">
             <button onClick={toggleModalPreview} className="cursor-pointer">
               <Image
@@ -24,7 +24,7 @@ const ScheduleCard = (props: Proptypes) => {
                 width={500}
                 height={500}
                 alt={`${data.show.name}`}
-                className="rounded-md w-[120px] h-[150px]"
+                className="rounded-md w-[120px] h-[165px]"
               />
             </button>
             <div>
