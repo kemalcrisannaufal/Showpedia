@@ -1,3 +1,5 @@
+import { ICast } from "./cast.type";
+
 interface ITVShow {
   id: number;
   url: string | null;
@@ -55,7 +57,7 @@ interface ITVShow {
       name: string | null;
     };
   } | null;
-  _embedded: { episodes: IEpisode[] } | null;
+  _embedded: { episodes: IEpisode[]; cast: ICast[] } | null;
 }
 
 interface IScheduleTVShow {

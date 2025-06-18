@@ -2,6 +2,7 @@ import Image from "next/image";
 import EpisodeList from "./EpisodeList";
 import useDetailShow from "./useDetailShow";
 import Button from "@/components/ui/Button";
+import CastList from "./CastList";
 
 const DetailShow = () => {
   const { dataDetailShow, episodesGroupBySeason, isLoadingDetailShow } =
@@ -10,8 +11,8 @@ const DetailShow = () => {
   return (
     <>
       {!isLoadingDetailShow && dataDetailShow ? (
-        <div className="flex md:flex-row flex-col-reverse gap-5">
-          <div className="md:px-10 py-5 rounded-md md:w-3/4 h-max">
+        <div className="flex md:flex-row flex-col-reverse gap-5 min-h-screen">
+          <div className="md:px-10 rounded-md md:w-3/4 h-max">
             <div>
               <h1 className="font-bold text-red-600 text-3xl">
                 {dataDetailShow?.name}
@@ -42,19 +43,22 @@ const DetailShow = () => {
             </div>
 
             <EpisodeList episodesGroupBySeason={episodesGroupBySeason} />
+            <CastList casts={dataDetailShow._embedded?.cast} />
           </div>
 
-          <div className="md:w-1/4">
-            <Image
-              src={`${dataDetailShow?.image?.original}`}
-              alt={`${dataDetailShow?.name}`}
-              width={500}
-              height={500}
-              className="rounded-md w-full h-auto"
-            />
-            <Button fullWidth variant="secondary" classname="mt-2">
-              Official Site
-            </Button>
+          <div className="relative md:w-1/4">
+            <div className="top-16 sticky">
+              <Image
+                src={`${dataDetailShow?.image?.original}`}
+                alt={`${dataDetailShow?.name}`}
+                width={500}
+                height={500}
+                className="rounded-md w-full h-auto"
+              />
+              <Button fullWidth variant="secondary" classname="mt-2">
+                Official Site
+              </Button>
+            </div>
           </div>
         </div>
       ) : (

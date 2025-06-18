@@ -8,6 +8,7 @@ import Image from "next/image";
 import useEpisodeList from "./useEpisodeList";
 import EpisodeListRatingModal from "./EpisodeListRatingModal";
 import { AnimatePresence, motion } from "framer-motion";
+import { DEFAULT_SEASON_RATING_MODAL } from "@/constants/list.constants";
 
 interface Proptypes {
   episodesGroupBySeason: Record<number, IEpisode[]>;
@@ -131,11 +132,11 @@ const EpisodeList = (props: Proptypes) => {
       </div>
 
       <AnimatePresence>
-        {seasonRatingModal !== -1 && (
+        {seasonRatingModal !== DEFAULT_SEASON_RATING_MODAL && (
           <EpisodeListRatingModal
             episodes={episodesGroupBySeason[seasonRatingModal]}
             season={seasonRatingModal}
-            onClose={() => setSeasonRatingModal(-1)}
+            onClose={() => setSeasonRatingModal(DEFAULT_SEASON_RATING_MODAL)}
           />
         )}
       </AnimatePresence>

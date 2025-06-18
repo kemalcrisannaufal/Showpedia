@@ -1,4 +1,5 @@
-const getFormattedDate = (strDate: string) => {
+const getFormattedDate = (strDate: string | null) => {
+  if (strDate === null) return "";
   const optionsEN: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "long",
