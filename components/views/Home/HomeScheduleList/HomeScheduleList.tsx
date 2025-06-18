@@ -11,7 +11,7 @@ const HomeScheduleList = (props: Proptypes) => {
   return (
     <div className="mb-10">
       <h2 className="mb-2 font-bold text-red-600 text-2xl">Schedule</h2>
-      <div className="gap-5 grid lg:grid-cols-3 grid-flow-col auto-cols-max overflow-x-auto lg:overflow-x-hidden">
+      <div className="gap-5 grid xl:grid-cols-3 grid-flow-col auto-cols-max overflow-x-auto xl:overflow-x-hidden">
         {dataSchedule?.map((schedule, index) => (
           <ScheduleCard key={index} data={schedule} isLoading={isLoading} />
         ))}

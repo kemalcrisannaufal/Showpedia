@@ -10,6 +10,7 @@ const useHome = () => {
     );
     const responses = await Promise.all(request);
     const data = responses.map((res) => res.data);
+    console.log(data);
     return data;
   };
 
@@ -17,7 +18,7 @@ const useHome = () => {
     useQuery({
       queryKey: ["getShowpediaPicked"],
       queryFn: getShowpediaPicked,
-      enabled: false,
+      enabled: true,
     });
 
   const getScheduleByCountry = async (): Promise<IScheduleTVShow[]> => {

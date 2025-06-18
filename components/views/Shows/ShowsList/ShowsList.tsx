@@ -7,7 +7,7 @@ interface Proptypes {
   title: string;
 }
 
-const HomeList = (props: Proptypes) => {
+const ShowsList = (props: Proptypes) => {
   const { data, isLoading, title } = props;
   return (
     <div className="mb-10">
@@ -21,4 +21,4 @@ const HomeList = (props: Proptypes) => {
   );
 };
 
-export default HomeList;
+export default ShowsList;

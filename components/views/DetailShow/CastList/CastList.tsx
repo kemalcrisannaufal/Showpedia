@@ -17,7 +17,7 @@ const CastList = (props: Proptypes) => {
   return (
     <div className="mt-5">
       <h2 className="my-3 font-bold text-red-600 text-xl">Cast List</h2>
-      <div className="gap-5 grid md:grid-cols-3">
+      <div className="gap-5 grid grid-cols-1 xl:grid-cols-3">
         {casts?.slice(0, lastIdx).map((cast) => (
           <motion.div
             initial={{ opacity: 0 }}

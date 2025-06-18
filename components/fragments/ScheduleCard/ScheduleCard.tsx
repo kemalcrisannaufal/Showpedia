@@ -16,7 +16,7 @@ const ScheduleCard = (props: Proptypes) => {
   return (
     <>
       {!isLoading ? (
-        <div className="bg-red-100/10 shadow-md p-2 border-2 border-red-300 rounded-md">
+        <div className="bg-red-100/10 shadow-md p-2 md:px-3 border-2 border-red-300 rounded-md">
           <div className="flex gap-5">
             <button onClick={toggleModalPreview} className="cursor-pointer">
               <Image

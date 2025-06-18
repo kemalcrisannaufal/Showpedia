@@ -12,7 +12,7 @@ const DetailShow = () => {
     <>
       {!isLoadingDetailShow && dataDetailShow ? (
         <div className="flex md:flex-row flex-col-reverse gap-5 min-h-screen">
-          <div className="md:px-10 rounded-md md:w-3/4 h-max">
+          <div className="md:px-10 rounded-md md:w-2/3 h-max">
             <div>
               <h1 className="font-bold text-red-600 text-3xl">
                 {dataDetailShow?.name}
@@ -46,7 +46,7 @@ const DetailShow = () => {
             <CastList casts={dataDetailShow._embedded?.cast} />
           </div>
 
-          <div className="relative md:w-1/4">
+          <div className="relative md:w-1/3">
             <div className="top-16 sticky">
               <Image
                 src={`${dataDetailShow?.image?.original}`}
@@ -62,7 +62,42 @@ const DetailShow = () => {
           </div>
         </div>
       ) : (
-        <div></div>
+        <div>
+          <div className="flex md:flex-row flex-col-reverse gap-5 min-h-screen animate-pulse">
+            <div className="md:px-10 rounded-md md:w-2/3 h-max">
+              <div>
+                <div className="bg-gray-300 mb-2 rounded-lg w-[90%] h-12" />
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className={`bg-gray-300 my-2 rounded-lg w-full h-6`}
+                  />
+                ))}
+
+                <div className="mb-10" />
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <div
+                    key={index}
+                    className={`bg-gray-300 my-2 rounded-lg w-full h-6`}
+                  />
+                ))}
+
+                <div className="mb-10" />
+                <div className="gap-5 grid md:grid-cols-3 grid-col-1">
+                  {Array.from({ length: 3 }).map((_, index) => (
+                    <div
+                      key={index}
+                      className={`bg-gray-300 my-2 rounded-lg w-full h-[30vh]`}
+                    />
+                  ))}
+                </div>
+
+                <div className="mb-10" />
+              </div>
+            </div>
+            <div className="bg-gray-300 mb-2 rounded-md md:w-1/3 h-[60vh] md:h-[90vh] animate-pulse" />
+          </div>
+        </div>
       )}
     </>
   );

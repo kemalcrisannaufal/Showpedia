@@ -19,7 +19,11 @@ interface ITVShow {
   webChannel: {
     id: number | null;
     name: string | null;
-    country: string | null;
+    country: {
+      name: string | null;
+      code: string | null;
+      timezone: string | null;
+    } | null;
     officialSite: string | null;
   } | null;
   network: {
@@ -57,7 +61,7 @@ interface ITVShow {
       name: string | null;
     };
   } | null;
-  _embedded: { episodes: IEpisode[]; cast: ICast[] } | null;
+  _embedded?: { episodes: IEpisode[]; cast: ICast[] } | null;
 }
 
 interface IScheduleTVShow {

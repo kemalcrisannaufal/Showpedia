@@ -1,19 +1,27 @@
-import TVShowCard from "@/components/fragments/TVShowCard";
-import useShows from "./useShows";
-
+import { SHOWPEDIA_PICK } from "@/constants/list.constants";
+import ShowpediaPick from "./ShowpediaPick";
+import ShowsList from "./ShowsList";
+import {
+  AMERICAN_SERIES_DATA,
+  JAPANESE_SERIES_DATA,
+  KOREAN_SERIES_DATA,
+} from "./Shows.constants";
+  
 const Shows = () => {
-  const { dataShows, isLoadingShows } = useShows();
   return (
     <div>
-      <h2 className="mb-2 font-bold text-red-600 text-2xl">Shows</h2>
-      <div className="flex">
-        <div className="w-1/4"></div>
-        <div className="flex flex-wrap justify-between gap-5 lg:w-3/4">
-          {dataShows?.map((show, index) => (
-            <TVShowCard key={index} isLoading={isLoadingShows} tvShow={show} />
-          ))}
-        </div>
-      </div>
+      <ShowpediaPick shows={SHOWPEDIA_PICK} />
+      <ShowsList
+        data={AMERICAN_SERIES_DATA}
+        isLoading={false}
+        title="American Series"
+      />
+      <ShowsList
+        data={KOREAN_SERIES_DATA}
+        isLoading={false}
+        title="Korean Series"
+      />
+      <ShowsList data={JAPANESE_SERIES_DATA} isLoading={false} title="Anime" />
     </div>
   );
 };

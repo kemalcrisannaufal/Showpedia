@@ -13,7 +13,7 @@ const TypingTextEffect = (props: Proptypes) => {
   const [charIdx, setCharIdx] = useState<number>(0);
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   useEffect(() => {
-    const delay = isDeleting ? 50 : 100;
+    const delay = isDeleting ? 70 : 120;
     let timeout: NodeJS.Timeout;
 
     if (!isDeleting && charIdx === text.length) {

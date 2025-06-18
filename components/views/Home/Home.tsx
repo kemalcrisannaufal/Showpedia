@@ -1,8 +1,8 @@
-import { SHOWPEDIA_PICK } from "./Home.constants";
 import HomeList from "./HomeList";
 import HomeSlider from "./HomeSlider";
 import useHome from "./useHome";
 import HomeScheduleList from "./HomeScheduleList";
+import { SHOWPEDIA_PICK } from "@/constants/list.constants";
 
 const Home = () => {
   const { dataSchedule, isLoadingSchedule } = useHome();
