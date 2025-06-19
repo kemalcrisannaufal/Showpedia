@@ -4,23 +4,34 @@ import Image from "next/image";
 import useScheduleCard from "./useScheduleCard";
 import { AnimatePresence } from "framer-motion";
 import TVShowPreviewModal from "../TVShowPreviewModal";
+import { cn } from "@/utils/cn";
 
 interface Proptypes {
+  classname?: string;
   data: IScheduleTVShow;
   isLoading: boolean;
+  showSummary?: boolean;
 }
 
 const ScheduleCard = (props: Proptypes) => {
-  const { data, isLoading } = props;
+  const { classname, data, isLoading, showSummary = false } = props;
   const { isModalPreviewOpen, toggleModalPreview } = useScheduleCard();
   return (
     <>
       {!isLoading ? (
-        <div className="bg-red-100/10 shadow-md p-2 md:px-3 border-2 border-red-300 rounded-md">
+        <div
+          className={cn(
+            "bg-red-100/10 shadow-md p-2 md:px-3 border-2 border-red-300 rounded-md",
+            classname
+          )}
+        >
           <div className="flex gap-5">
-            <button onClick={toggleModalPreview} className="cursor-pointer">
+            <button
+              onClick={toggleModalPreview}
+              className="block min-w-[120px] cursor-pointer"
+            >
               <Image
-                src={`${data.show.image?.original}`}
+                src={data.show.image?.original || "/images/general/logo.svg"}
                 width={500}
                 height={500}
                 alt={`${data.show.name}`}
@@ -31,7 +42,7 @@ const ScheduleCard = (props: Proptypes) => {
               <p className="font-semibold text-red-600 text-lg lg:text-2xl line-clamp-2">
                 {data.show.name}
               </p>
-              <div className="bg-yellow-300/50 mt-1 px-3 py-1 rounded-lg w-max font-semibold text-xs">
+              <div className="bg-amber-500/50 mt-1 px-3 py-1 rounded-lg w-max font-semibold text-xs">
                 {data.show.type}
               </div>
 
@@ -41,12 +52,20 @@ const ScheduleCard = (props: Proptypes) => {
                   <span>|</span>
                   <p>{data.name}</p>
                 </div>
-                <div className="flex items-center gap-2">
+
+                {showSummary && (
+                  <p
+                    className="line-clamp-2"
+                    dangerouslySetInnerHTML={{ __html: `${data.show.summary}` }}
+                  />
+                )}
+
+                <div className="flex items-center gap-2 font-semibold text-sky-800">
                   <p>{getFormattedDate(`${data.airdate}`)}</p>
                   <p>&#8226;</p>
                   <p>{data.airtime}</p>
                 </div>
-                <p>{data.runtime} Minutes</p>
+                <p>{data.runtime || "N/A"} Minutes</p>
               </div>
             </div>
           </div>

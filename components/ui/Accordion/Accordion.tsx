@@ -25,7 +25,7 @@ const Accordion = (props: Proptypes) => {
         <button
           disabled={!titleClickable}
           className={cn(
-            "font-bold text-gray-600 text-lg",
+            "font-medium text-red-600 text-lg",
             titleClickable && "cursor-pointer underline"
           )}
           onClick={onClickTitle}
@@ -34,7 +34,7 @@ const Accordion = (props: Proptypes) => {
         </button>
         <button
           className={cn(
-            "p-2 text-gray-600 transition-transform cursor-pointer duration-500",
+            "p-2 text-red-600 transition-transform cursor-pointer duration-500",
             isOpen && "-rotate-90"
           )}
           onClick={handleToggleOpen}

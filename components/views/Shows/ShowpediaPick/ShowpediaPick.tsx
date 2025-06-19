@@ -25,7 +25,7 @@ const ShowpediaPick = ({ shows }: Proptypes) => {
       <div className="z-10 flex md:flex-row flex-col flex-wrap md:flex-nowrap justify-center items-center gap-10 lg:gap-20">
         <div className="w-full max-w-md text-white">
           <TypingTextEffect
-            classname="mb-2 md:mb-5 font-bold text-red-500 text-3xl md:text-4xl lg:text-5xl min-h-8 md:min-h-12 w-full"
+            classname="mb-2 md:mb-5 font-bold text-transparent bg-gradient-to-r bg-clip-text via-[#B11226] from-[#E50914] to-[#E50914] text-3xl md:text-4xl lg:text-5xl min-h-8 md:min-h-12 w-full"
             text="Showpedia Pick"
           />
           <p className="text-md text-neutral-600">
@@ -51,7 +51,7 @@ const ShowpediaPick = ({ shows }: Proptypes) => {
             className="mySwiper"
           >
             {shows.map((show) => (
-              <SwiperSlide key={show.id}>
+              <SwiperSlide key={show.id} className="rounded-xl">
                 <div className="relative shadow-lg rounded-xl overflow-hidden">
                   <Link href={`/shows/${show.id}`}>
                     <Image
@@ -64,7 +64,7 @@ const ShowpediaPick = ({ shows }: Proptypes) => {
                       className="w-full h-[500px] object-cover"
                     />
                   </Link>
-                  <div className="bottom-0 absolute bg-black/60 p-3 w-full text-white">
+                  <div className="bottom-0 absolute bg-black/60 p-3 rounded-b-xl w-full text-white">
                     <h3 className="font-semibold text-lg">{show.name}</h3>
                     <p className="text-sm">{show.genres?.join(", ")}</p>
                   </div>

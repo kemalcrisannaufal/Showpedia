@@ -5,7 +5,7 @@ import { cn } from "@/utils/cn";
 
 const MainFooterLayout = () => {
   return (
-    <div className="flex lg:flex-row flex-col lg:justify-between items-center gap-5 bg-red-600 p-10 lg:p-20 w-full text-white lg:text-left text-center">
+    <div className="flex lg:flex-row flex-col lg:justify-between items-center gap-5 bg-gradient-to-r from-[#c12626] via-[#E50914] to-[#c12626] p-10 lg:p-20 w-full text-white lg:text-left text-center">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-5">
         <Image

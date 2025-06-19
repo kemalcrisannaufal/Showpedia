@@ -29,7 +29,9 @@ const CastList = (props: Proptypes) => {
           >
             <Image
               src={
-                cast.character.image?.medium || cast.person.image?.medium || "/"
+                cast.character.image?.original ||
+                cast.person.image?.original ||
+                "/"
               }
               alt={`${cast.person.name}`}
               width={500}
@@ -37,7 +39,7 @@ const CastList = (props: Proptypes) => {
               className="shadow-md rounded-sm w-1/2"
             />
             <div className="w-1/2">
-              <p className="font-medium text-neutral-700 text-xl">
+              <p className="font-semibold text-neutral-700 text-xl">
                 {cast.person.name}
               </p>
               <p className="text-neutral-600 text-sm">
@@ -48,8 +50,8 @@ const CastList = (props: Proptypes) => {
               </p>
 
               {cast.person.deathday && (
-                <div>
-                  <p>Death on</p>
+                <div className="mt-3 text-neutral-600 text-xs">
+                  <p className="font-semibold">Death on</p>
                   <p>{getFormattedDate(cast.person.deathday)}</p>
                 </div>
               )}

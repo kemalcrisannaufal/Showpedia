@@ -21,10 +21,10 @@ const TVShowCard = (props: Proptypes) => {
             onClick={toggleModalPreview}
           >
             <Image
-              src={`${tvShow.image?.medium}`}
+              src={`${tvShow.image?.original}`}
               alt={`${tvShow.name}`}
-              width={500}
-              height={1000}
+              width={800}
+              height={1920}
               className="shadow-lg rounded-md w-[145px] h-[200px]"
             />
           </button>

@@ -25,6 +25,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
 @keyframes gelatine {
   0%,
   100% {
@@ -42,4 +49,16 @@ body {
   75% {
     transform: scale(0.95, 1.05);
   }
+}
+
+.react-datepicker {
+  z-index: 9999 !important;
+}
+
+.react-datepicker__triangle {
+  z-index: 9998 !important;
+}
+
+.react-datepicker-popper {
+  z-index: 9999 !important;
 }

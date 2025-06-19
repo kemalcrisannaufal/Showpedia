@@ -43,10 +43,13 @@ const MainNavbarLayout = () => {
             href={item.href}
             key={index}
             className={cn(
-              "px-4 py-2 font-medium  transition-all duration-500 ease-in-out",
-              item.href === pathname
-                ? "font-semibold"
-                : "text-red-600/65 hover:text-white hover:bg-red-600 hover:rounded-full"
+              "px-4 py-2 font-medium  transition-all duration-500 ease-in-out text-red-600/65 hover:text-white hover:bg-red-600 hover:rounded-full",
+              pathname === "/" &&
+                item.href === "/" &&
+                "font-semibold text-red-600",
+              pathname.startsWith(item.href) &&
+                item.href !== "/" &&
+                "font-semibold text-red-600"
             )}
           >
             {item.label}

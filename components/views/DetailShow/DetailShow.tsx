@@ -12,7 +12,7 @@ const DetailShow = () => {
     <>
       {!isLoadingDetailShow && dataDetailShow ? (
         <div className="flex md:flex-row flex-col-reverse gap-5 min-h-screen">
-          <div className="md:px-10 rounded-md md:w-2/3 h-max">
+          <div className="md:px-10 rounded-md md:w-3/4 h-max">
             <div>
               <h1 className="font-bold text-red-600 text-3xl">
                 {dataDetailShow?.name}
@@ -46,7 +46,7 @@ const DetailShow = () => {
             <CastList casts={dataDetailShow._embedded?.cast} />
           </div>
 
-          <div className="relative md:w-1/3">
+          <div className="relative md:w-1/4">
             <div className="top-16 sticky">
               <Image
                 src={`${dataDetailShow?.image?.original}`}

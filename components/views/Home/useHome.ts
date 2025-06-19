@@ -10,7 +10,6 @@ const useHome = () => {
     );
     const responses = await Promise.all(request);
     const data = responses.map((res) => res.data);
-    console.log(data);
     return data;
   };
 
