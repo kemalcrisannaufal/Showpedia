@@ -15,7 +15,7 @@ const Modal = (props: Proptypes) => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1, transition: { duration: 0.4 } }}
         exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.4 } }}
-        className="relative bg-white md:rounded-lg rounded-t-xl w-full max-w-xl"
+        className="relative bg-white md:rounded-lg rounded-t-xl w-full max-w-xl max-h-[80vh] overflow-y-auto scrollbar-hide"
       >
         {children}
         <button
@@ -26,7 +26,9 @@ const Modal = (props: Proptypes) => {
           <FiX className="text-xl" />
         </button>
 
-        <div className="md:hidden bg-red-600 h-12" />
+        <div className="md:hidden flex justify-center items-center bg-gradient-to-r from-[#7f1d1d] via-[#ef4444] to-[#7f1d1d] rounded-t-full h-12">
+          <span className="text-white text-xs">Showpedia</span>
+        </div>
       </motion.div>
     </div>
   );

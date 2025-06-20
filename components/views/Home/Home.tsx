@@ -6,7 +6,7 @@ import { SHOWPEDIA_PICK } from "@/constants/list.constants";
 
 const Home = () => {
   const { dataSchedule, isLoadingSchedule } = useHome();
-  console.log(dataSchedule);
+
   return (
     <div>
       <HomeSlider />

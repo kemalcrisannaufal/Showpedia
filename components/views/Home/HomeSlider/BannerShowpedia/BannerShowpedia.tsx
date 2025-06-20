@@ -2,8 +2,10 @@ import Button from "@/components/ui/Button";
 import TypingTextEffect from "@/components/ui/TypingTextEffect";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 const BannerShowpedia = () => {
+  const { push } = useRouter();
   return (
     <div
       className={cn(
@@ -36,7 +38,10 @@ const BannerShowpedia = () => {
           Explore information on movies, TV series, and dramas from various
           genres with us.
         </p>
-        <Button classname="bg-white text-red-600 font-medium mt-3 hover:bg-gray-200 text-sm md:text-md">
+        <Button
+          classname="bg-white text-red-600 font-medium mt-3 hover:bg-gray-200 text-sm md:text-md"
+          onClick={() => push("/shows")}
+        >
           Start Exploring
         </Button>
       </div>

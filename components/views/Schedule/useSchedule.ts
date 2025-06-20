@@ -2,7 +2,7 @@ import {
   DEFAULT_FILTER_SCHEDULE,
   DEFAULT_LAST_IDX_SCHEDULE_SHOW,
 } from "@/constants/list.constants";
-import mainServices from "@/services/main.services";
+import scheduleServices from "@/services/schedule.services";
 import { IScheduleTVShow } from "@/types/tvshow.type";
 import { getSevenConsecutiveDate } from "@/utils/date";
 import { useQuery } from "@tanstack/react-query";
@@ -21,7 +21,7 @@ const useSchedule = () => {
     if (filter.date === "") {
       setDates(getSevenConsecutiveDate());
       const request = dates.map((item) =>
-        mainServices.getScheduleByDateAndCountry(filter.country, item)
+        scheduleServices.getScheduleByDateAndCountry(filter.country, item)
       );
 
       const responses = await Promise.all(request);
@@ -31,11 +31,11 @@ const useSchedule = () => {
     }
 
     setDates([filter.date]);
-    const { data } = await mainServices.getScheduleByDateAndCountry(
+    const { data } = await scheduleServices.getScheduleByDateAndCountry(
       filter.country,
       filter.date
     );
-    console.log(data);
+
     return [data];
   };
 

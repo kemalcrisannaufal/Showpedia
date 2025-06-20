@@ -103,7 +103,7 @@ interface IEpisode {
     original: string;
   };
   summary: string;
-  __links: {
+  _links: {
     self: {
       href: string;
     };

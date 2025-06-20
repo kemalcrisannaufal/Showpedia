@@ -60,7 +60,7 @@ const MainFooterLayout = () => {
           ))}
         </div>
 
-        <p className="mt-5">Copyright &copy; 2025 Ulasin</p>
+        <p className="mt-5">Copyright &copy; 2025 Showpedia</p>
       </div>
     </div>
   );

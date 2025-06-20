@@ -8,6 +8,8 @@ import ScheduleFilter from "./ScheduleFilter";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import { DEFAULT_LAST_IDX_SCHEDULE_SHOW } from "@/constants/list.constants";
+import Image from "next/image";
+import { IScheduleTVShow } from "@/types/tvshow.type";
 
 const Schedule = () => {
   const {
@@ -33,49 +35,69 @@ const Schedule = () => {
         />
         <div className="xl:w-2/3">
           <Tabs tabsHeader={dates.map((date) => getFormattedDate(date))}>
-            {dataSchedule?.map((schedules, index) => (
-              <div key={index}>
-                {schedules.length > 0 ? (
-                  <motion.div
-                    key={idxLastSchedule}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {schedules.slice(0, idxLastSchedule).map((schedule) => (
-                      <ScheduleCard
-                        key={schedule.id}
-                        data={schedule}
-                        isLoading={isLoadingSchedule}
-                        showSummary
-                        classname="border-none shadow-none"
-                      />
-                    ))}
+            {!isLoadingSchedule
+              ? dataSchedule?.map((schedules, index) => (
+                  <div key={`tab-schedule-${index}`}>
+                    {schedules.length > 0 ? (
+                      <motion.div
+                        key={idxLastSchedule}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {schedules.slice(0, idxLastSchedule).map((schedule) => (
+                          <ScheduleCard
+                            key={schedule.id}
+                            data={schedule}
+                            isLoading={isLoadingSchedule}
+                            showSummary
+                            classname="border-none shadow-none"
+                          />
+                        ))}
 
-                    {schedules.length > DEFAULT_LAST_IDX_SCHEDULE_SHOW && (
-                      <div className="flex justify-center mt-3">
-                        <Button
-                          onClick={() =>
-                            handleClickIdxLastSchedule(schedules.length)
-                          }
-                          variant="secondary"
-                          classname="text-sm"
-                        >
-                          {idxLastSchedule < schedules.length
-                            ? "Load More"
-                            : "Show Less"}
-                        </Button>
+                        {schedules.length > DEFAULT_LAST_IDX_SCHEDULE_SHOW && (
+                          <div className="flex justify-center mt-3">
+                            <Button
+                              onClick={() =>
+                                handleClickIdxLastSchedule(schedules.length)
+                              }
+                              variant="secondary"
+                              classname="text-sm"
+                            >
+                              {idxLastSchedule < schedules.length
+                                ? "Load More"
+                                : "Show Less"}
+                            </Button>
+                          </div>
+                        )}
+                      </motion.div>
+                    ) : (
+                      <div className="flex justify-center items-center gap-5 p-5 border border-gray-300 rounded-md w-full text-gray-600 text-sm md:text-lg">
+                        <Image
+                          src={"/images/illustrations/megaphone.png"}
+                          alt="alert"
+                          height={75}
+                          width={75}
+                        />
+                        No data available for this country/date
                       </div>
                     )}
-                  </motion.div>
-                ) : (
-                  <div className="flex justify-center items-center p-5 w-full text-gray-600 text-lg">
-                    No data available for this country/date
                   </div>
-                )}
-              </div>
-            ))}
+                ))
+              : Array.from({ length: dates.length }).map((_, index) => (
+                  <div key={`tab-schedule-skeleton-${index}`}>
+                    <div className="flex flex-col gap-5">
+                      {Array.from({ length: 3 }).map((_, index) => (
+                        <ScheduleCard
+                          key={`schedule-skeleton-${index}`}
+                          data={{} as IScheduleTVShow}
+                          isLoading
+                        />
+                      ))}
+                    </div>
+                  </div>
+                ))}
           </Tabs>
         </div>
       </section>

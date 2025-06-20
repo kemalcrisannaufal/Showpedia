@@ -21,7 +21,7 @@ const NAV_ITEMS = [
     label: "Schedule",
     href: "/schedule",
   },
-];
+  ];
 
 const SOCIAL_ITEMS = [
   {

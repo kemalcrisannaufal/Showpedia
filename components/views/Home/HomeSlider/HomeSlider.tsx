@@ -24,7 +24,7 @@ const HomeSlider = (props: Proptypes) => {
       autoplay={{ delay: 5000 }}
       modules={[Pagination, Autoplay]}
       loop
-      className="mb-5 rounded-xl w-full"
+      className="mb-5 rounded-xl w-full h-max"
     >
       {reverse ? children.reverse() : children}
     </Swiper>

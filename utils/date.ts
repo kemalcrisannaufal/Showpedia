@@ -1,5 +1,5 @@
-const getFormattedDate = (strDate: string | null) => {
-  if (strDate === null) return "";
+const getFormattedDate = (strDate: string | null | undefined) => {
+  if (typeof strDate !== "string") return "";
   const optionsEN: Intl.DateTimeFormatOptions = {
     day: "numeric",
     month: "long",
@@ -32,4 +32,28 @@ const getDayByDate = (strDate: string) => {
   return day;
 };
 
-export { getFormattedDate, getDate, getSevenConsecutiveDate, getDayByDate };
+const getAge = (
+  birthdate: string | null | undefined,
+  deathdate: string | null | undefined = "none"
+) => {
+  if (typeof birthdate !== "string") {
+    return;
+  }
+
+  let now;
+  if (typeof deathdate === "string" && deathdate !== "none") {
+    now = new Date(deathdate);
+  } else {
+    now = new Date();
+  }
+  const bdate = new Date(birthdate);
+  return now.getFullYear() - bdate.getFullYear();
+};
+
+export {
+  getFormattedDate,
+  getDate,
+  getSevenConsecutiveDate,
+  getDayByDate,
+  getAge,
+};

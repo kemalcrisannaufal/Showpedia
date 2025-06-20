@@ -1,4 +1,4 @@
-import mainServices from "@/services/main.services";
+import showServices from "@/services/show.services";
 import { ITVShow } from "@/types/tvshow.type";
 import { groupEpisodesBySeason } from "@/utils/groupEpisodeBySeason";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +8,7 @@ const useDetailShow = () => {
   const { isReady, query } = useRouter();
 
   const getDetailShow = async (): Promise<ITVShow> => {
-    const { data } = await mainServices.getDetailShowById(`${query.id}`);
+    const { data } = await showServices.getDetailShowById(`${query.id}`);
     return data;
   };
 
