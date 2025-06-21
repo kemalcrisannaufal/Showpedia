@@ -5,6 +5,7 @@ const useEpisodeList = () => {
   const [seasonRatingModal, setSeasonRatingModal] = useState(
     DEFAULT_SEASON_RATING_MODAL
   );
+  
   const [expandedDescription, setExpandedDescription] = useState<{
     [id: number]: boolean;
   }>({});

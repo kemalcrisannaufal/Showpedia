@@ -1,6 +1,6 @@
 import showServices from "@/services/show.services";
 import { ITVShow } from "@/types/tvshow.type";
-import { groupEpisodesBySeason } from "@/utils/groupEpisodeBySeason";
+import { groupEpisodesBySeason } from "@/utils/groupEpisode";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 
@@ -12,7 +12,7 @@ const useDetailShow = () => {
     return data;
   };
 
-  const { data: dataDetailShow, isLoading: isLoadingDetailShow } = useQuery({
+  const { data: dataDetailShow, isPending: isPendingDetailShow } = useQuery({
     queryKey: ["getDetailShowById"],
     queryFn: getDetailShow,
     enabled: isReady && !!query.id,
@@ -25,7 +25,7 @@ const useDetailShow = () => {
   return {
     dataDetailShow,
     episodesGroupBySeason,
-    isLoadingDetailShow,
+    isPendingDetailShow,
   };
 };
 

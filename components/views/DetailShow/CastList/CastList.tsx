@@ -35,12 +35,12 @@ const CastList = (props: Proptypes) => {
                   src={
                     cast.character.image?.original ||
                     cast.person.image?.original ||
-                    "/"
+                    "/images/illustrations/img-not-found.jpg"
                   }
                   alt={`${cast.person.name}`}
                   width={500}
                   height={1000}
-                  className="shadow-md rounded-sm w-[150px] lg:w-[200px] xl:w-1/2 h-auto"
+                  className="shadow-md rounded-sm w-[150px] lg:w-[200px] xl:w-1/2 h-auto object-cover"
                 />
                 <div className="xl:w-1/2">
                   <Link

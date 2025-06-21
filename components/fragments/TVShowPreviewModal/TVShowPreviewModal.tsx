@@ -16,7 +16,11 @@ const TVShowPreviewModal = (props: Proptypes) => {
     <Modal onClose={onClose}>
       <div className="flex gap-5 p-5">
         <Image
-          src={`${tvShow.image?.original}`}
+          src={
+            tvShow.image?.original ||
+            tvShow.image?.medium ||
+            "/images/illustrations/img-not-found.jpg"
+          }
           alt={tvShow.name}
           width={500}
           height={500}
@@ -36,7 +40,9 @@ const TVShowPreviewModal = (props: Proptypes) => {
               ))}
             </div>
             <p
-              dangerouslySetInnerHTML={{ __html: `${tvShow.summary}` }}
+              dangerouslySetInnerHTML={{
+                __html: tvShow.summary || "Summary is not available",
+              }}
               className="mt-3 text-neutral-700 text-xs md:text-sm line-clamp-4 md:line-clamp-3 leading-relaxed"
             />
           </div>

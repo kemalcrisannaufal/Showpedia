@@ -44,13 +44,17 @@ const InformationDetailShow = (props: Proptypes) => {
                 <li>Status: {`${dataDetailShow?.status}`} </li>
               </ul>
             </div>
-            
+
             <EpisodeList episodesGroupBySeason={episodesGroupBySeason} />
           </div>
 
           <div className="w-1/4">
             <Image
-              src={`${dataDetailShow?.image?.original}`}
+              src={
+                dataDetailShow?.image?.original ||
+                dataDetailShow?.image?.medium ||
+                "/images/illustrations/img-not-found.jpg"
+              }
               alt={`${dataDetailShow?.name}`}
               width={500}
               height={500}

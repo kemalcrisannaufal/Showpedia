@@ -36,7 +36,7 @@ const EpisodeList = (props: Proptypes) => {
                 onClickTitle={() => setSeasonRatingModal(+season)}
               >
                 {episodes.map((episode) => (
-                  <AccordionItem key={episode.id}>
+                  <AccordionItem key={episode.id} id={`${episode.id}`}>
                     <div className="flex flex-wrap md:flex-nowrap gap-5">
                       {episode.image?.original ? (
                         <Image

@@ -56,7 +56,9 @@ const ShowpediaPick = ({ shows }: Proptypes) => {
                   <Link href={`/shows/${show.id}`}>
                     <Image
                       src={
-                        show.image?.original || "/images/general/logo-white.svg"
+                        show.image?.original ||
+                        show.image?.medium ||
+                        "/images/illustrations/img-not-found.jpg"
                       }
                       alt={show.name}
                       width={350}

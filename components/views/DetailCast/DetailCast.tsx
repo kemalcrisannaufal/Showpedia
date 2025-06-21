@@ -11,17 +11,26 @@ const DetailCast = () => {
     dataEpisodeList,
     detailShow,
     setDetailShow,
+    groupCastEpisodesByShow,
   } = useDetailCast();
+
+  console.log(groupCastEpisodesByShow);
 
   return (
     <>
       <div className="min-h-screen">
         <div className="flex md:flex-row flex-col gap-10">
-          <ProfileImageCast dataCast={dataCast} />
+          <ProfileImageCast
+            dataCast={dataCast}
+            dataShowByCast={dataShowByCast}
+            dataCastAsGuestGroupByShow={groupCastEpisodesByShow}
+          />
+
           <CastShowList
             dataShowByCast={dataShowByCast}
             dataEpisodeList={dataEpisodeList}
             setDetailShow={setDetailShow}
+            dataCastAsGuestGroupByShow={groupCastEpisodesByShow}
           />
         </div>
       </div>

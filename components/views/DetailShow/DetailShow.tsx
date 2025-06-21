@@ -6,12 +6,12 @@ import Link from "next/link";
 import { cn } from "@/utils/cn";
 
 const DetailShow = () => {
-  const { dataDetailShow, episodesGroupBySeason, isLoadingDetailShow } =
+  const { dataDetailShow, episodesGroupBySeason, isPendingDetailShow } =
     useDetailShow();
 
   return (
     <>
-      {!isLoadingDetailShow && dataDetailShow ? (
+      {!isPendingDetailShow && dataDetailShow ? (
         <div className="flex md:flex-row flex-col-reverse gap-5 min-h-screen">
           <div className="md:px-10 rounded-md md:w-3/4 h-max">
             <div>
@@ -82,7 +82,11 @@ const DetailShow = () => {
           <div className="relative md:w-1/4">
             <div className="top-16 sticky">
               <Image
-                src={`${dataDetailShow?.image?.original}`}
+                src={
+                  dataDetailShow?.image?.original ||
+                  dataDetailShow?.image?.medium ||
+                  "/images/illustrations/img-not-found.jpg"
+                }
                 alt={`${dataDetailShow?.name}`}
                 width={500}
                 height={500}

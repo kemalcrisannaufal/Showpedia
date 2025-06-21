@@ -5,6 +5,7 @@ import { IEpisode, ITVShow } from "@/types/tvshow.type";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { groupEpisodesByShow } from "@/utils/groupEpisode";
 
 const useDetailCast = () => {
   const { query, isReady } = useRouter();
@@ -64,6 +65,8 @@ const useDetailCast = () => {
       enabled: !!query.id && isReady,
     });
 
+  const groupCastEpisodesByShow = groupEpisodesByShow(dataShowByCastAsGuest);
+
   return {
     dataCast,
     isLoadingCastData,
@@ -75,6 +78,7 @@ const useDetailCast = () => {
     isLoadingShowByCastAsGuest,
     detailShow,
     setDetailShow,
+    groupCastEpisodesByShow,
   };
 };
 

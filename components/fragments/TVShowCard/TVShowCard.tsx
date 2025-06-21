@@ -21,7 +21,11 @@ const TVShowCard = (props: Proptypes) => {
             onClick={toggleModalPreview}
           >
             <Image
-              src={`${tvShow.image?.original}`}
+              src={
+                tvShow.image?.original ||
+                tvShow.image?.medium ||
+                "/images/illustrations/img-not-found.jpg"
+              }
               alt={`${tvShow.name}`}
               width={800}
               height={1920}

@@ -31,7 +31,11 @@ const ScheduleCard = (props: Proptypes) => {
               className="block min-w-[120px] cursor-pointer"
             >
               <Image
-                src={data.show.image?.original || "/images/general/logo.svg"}
+                src={
+                  data.show.image?.original ||
+                  data.show.image?.medium ||
+                  "/images/illustrations/img-not-found.jpg"
+                }
                 width={500}
                 height={500}
                 alt={`${data.show.name}`}
@@ -50,7 +54,7 @@ const ScheduleCard = (props: Proptypes) => {
                 <div className="flex items-center gap-2 mt-2">
                   <p>Season {data.season}</p>
                   <span>|</span>
-                  <p>{data.name}</p>
+                  <p className="line-clamp-2">{data.name}</p>
                 </div>
 
                 {showSummary && (

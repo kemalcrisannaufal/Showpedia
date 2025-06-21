@@ -13,11 +13,13 @@ const MainLayout = (props: Proptypes) => {
   return (
     <>
       <PageHead title={title} />
-      <MainNavbarLayout />
-      <section className="my-5 md:my-10 px-5 md:px-10 min-h-[75vh]">
-        {children}
-      </section>
-      <MainFooterLayout />
+      <div>
+        <MainNavbarLayout />
+        <section className="my-5 md:my-10 px-5 md:px-10 min-h-[75vh]">
+          {children}
+        </section>
+        <MainFooterLayout />
+      </div>
     </>
   );
 };
