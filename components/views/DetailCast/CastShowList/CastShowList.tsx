@@ -37,7 +37,7 @@ const CastShowList = (props: Proptypes) => {
           <div className="flex items-center gap-2 mb-4">
             <h3 className="font-bold text-red-600 text-2xl">Appeared in</h3>
             <div className="bg-red-600 px-3 py-2 rounded-full font-medium text-white">
-              {dataShowByCast?.length}
+              {dataShowByCast?.length || 0}
             </div>
           </div>
 

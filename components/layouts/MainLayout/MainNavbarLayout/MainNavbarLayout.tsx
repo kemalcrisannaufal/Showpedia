@@ -1,12 +1,12 @@
 import Image from "next/image";
 import { NAV_ITEMS } from "../MainLayout.constants";
-import { FiSearch } from "react-icons/fi";
 import Link from "next/link";
 import { cn } from "@/utils/cn";
 import HamburgerMenu from "@/components/ui/HamburgerMenu";
 import useMainNavbarLayout from "./useMainNavbarLayout";
 import MainNavbarDrawer from "./MainNavbarDrawer";
 import { AnimatePresence } from "framer-motion";
+import SearchBar from "./SearchBar";
 
 const MainNavbarLayout = () => {
   const { handleOnClick, isDrawerOpen, pathname } = useMainNavbarLayout();
@@ -27,17 +27,12 @@ const MainNavbarLayout = () => {
       </div>
 
       {/* Search */}
-      <div className="hidden lg:flex items-center bg-white px-4 py-1 border-2 border-red-600 rounded-full w-1/3">
-        <FiSearch className="mr-2 text-lg" />
-        <input
-          type="text"
-          placeholder="Search"
-          className="py-1 pr-3 focus:outline-none w-full"
-        />
+      <div className="hidden md:block w-full md:w-1/2 xl:w-1/3">
+        <SearchBar />
       </div>
 
       {/* Nav Items */}
-      <div className="hidden lg:flex justify-end gap-3 w-1/3">
+      <div className="hidden xl:flex justify-end gap-3 w-1/3">
         {NAV_ITEMS.map((item, index) => (
           <Link
             href={item.href}

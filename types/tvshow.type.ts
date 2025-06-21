@@ -114,4 +114,9 @@ interface IEpisode {
   };
 }
 
-export type { ITVShow, IScheduleTVShow, IEpisode };
+interface ITVShowsSearch {
+  score?: number;
+  show: ITVShow;
+}
+
+export type { ITVShow, IScheduleTVShow, IEpisode, ITVShowsSearch };

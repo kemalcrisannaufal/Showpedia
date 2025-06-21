@@ -32,7 +32,7 @@ const ProfileImageCast = (props: Proptypes) => {
             {getAge(dataCast?.birthday, dataCast?.deathday)} years)
           </p>
           {dataCast?.deathday && (
-            <p className="mt-1 font-semibold text-red-300">
+            <p className="mt-1 font-semibold text-red-200">
               Died: {getFormattedDate(dataCast?.deathday)}
             </p>
           )}

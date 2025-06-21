@@ -8,6 +8,9 @@ const showServices = {
     instance.get(`${ENDPOINT.SHOW}/${id}?embed[]=episodes&embed[]=cast`),
   getEpisodesByShow: (id: string) =>
     instance.get(`${ENDPOINT.SHOW}/${id}/episodes`),
+
+  searchByQuery: (query: string) =>
+    instance.get(`/search${ENDPOINT.SHOW}?q=${query}`),
 };
 
 export default showServices;

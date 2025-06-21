@@ -4,6 +4,7 @@ import { NAV_ITEMS } from "../../MainLayout.constants";
 import { cn } from "@/utils/cn";
 import { FiChevronRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import SearchBar from "../SearchBar";
 
 interface Proptypes {
   currentPathname: string;
@@ -16,7 +17,7 @@ const MainNavbarDrawer = (props: Proptypes) => {
       initial={{ x: "-100%" }}
       animate={{ x: 0, transition: { duration: 0.5 } }}
       exit={{ x: "-100%", transition: { duration: 0.5 } }}
-      className="lg:hidden z-50 fixed inset-0 bg-gradient-to-r from-[#c12626] via-[#E50914] to-[#c12626] p-10 w-[80%] h-screen text-white"
+      className="xl:hidden z-50 fixed inset-0 bg-gradient-to-r from-[#c12626] via-[#E50914] to-[#c12626] p-7 w-[80%] h-screen text-white"
     >
       <Link
         href="/"
@@ -30,7 +31,9 @@ const MainNavbarDrawer = (props: Proptypes) => {
         />
       </Link>
 
-      <div className="flex flex-col gap-5 mt-10">
+      <SearchBar classname="mt-6" />
+
+      <div className="flex flex-col gap-5 mt-6">
         {NAV_ITEMS.map((item, index) => (
           <Link
             href={item.href}

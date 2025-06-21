@@ -9,7 +9,7 @@ const HamburgerMenu = (props: Proptypes) => {
   const { isOpen, handleOnClick } = props;
   return (
     <button
-      className="lg:hidden relative w-8 h-6 cursor-pointer"
+      className="xl:hidden relative w-8 h-6 cursor-pointer"
       onClick={handleOnClick}
     >
       <span

@@ -20,7 +20,7 @@ const DetailShow = () => {
               </h1>
               <p
                 dangerouslySetInnerHTML={{
-                  __html: `${dataDetailShow?.summary}`,
+                  __html: dataDetailShow?.summary || "Summary is not available",
                 }}
                 className="mt-2 text-md text-neutral-600 text-justify"
               />
