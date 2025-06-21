@@ -12,7 +12,7 @@ const useDetailCast = () => {
   const [detailShow, setDetailShow] = useState<ITVShow>({} as ITVShow);
 
   const getCastData = async (): Promise<IPerson> => {
-    const { data } = await castServices.getCast(`${query.id}`);
+    const { data } = await castServices.getCastById(`${query.id}`);
     return data;
   };
 

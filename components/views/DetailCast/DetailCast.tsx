@@ -19,7 +19,7 @@ const DetailCast = () => {
   return (
     <>
       <div className="min-h-screen">
-        <div className="flex md:flex-row flex-col gap-10">
+        <div className="flex md:flex-row flex-col gap-5 lg:gap-10">
           <ProfileImageCast
             dataCast={dataCast}
             dataShowByCast={dataShowByCast}

@@ -29,7 +29,7 @@ const TVShowCard = (props: Proptypes) => {
               alt={`${tvShow.name}`}
               width={800}
               height={1920}
-              className="shadow-lg rounded-md w-[145px] h-[200px]"
+              className="shadow-lg rounded-md w-[145px] h-[200px] object-cover"
             />
           </button>
 

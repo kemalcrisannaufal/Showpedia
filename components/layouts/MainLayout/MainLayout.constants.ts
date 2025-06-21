@@ -18,10 +18,14 @@ const NAV_ITEMS = [
     href: "/shows",
   },
   {
+    label: "Cast",
+    href: "/cast",
+  },
+  {
     label: "Schedule",
     href: "/schedule",
   },
-  ];
+];
 
 const SOCIAL_ITEMS = [
   {

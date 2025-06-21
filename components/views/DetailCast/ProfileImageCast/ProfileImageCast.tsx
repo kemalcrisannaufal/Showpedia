@@ -38,7 +38,7 @@ const ProfileImageCast = (props: Proptypes) => {
           )}
         </div>
       </div>
-      <div className="bg-gray-200 mt-2 p-2 rounded-md">
+      <div className="bg-gray-200 mt-4 p-2 rounded-md">
         <p className="text-neutral-600 text-sm leading-6">
           <span className="font-semibold">{dataCast?.name}</span> is a{" "}
           {dataCast?.gender?.toLowerCase() === "male" ? "male" : "female"} actor
