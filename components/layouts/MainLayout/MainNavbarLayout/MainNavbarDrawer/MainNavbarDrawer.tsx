@@ -17,12 +17,9 @@ const MainNavbarDrawer = (props: Proptypes) => {
       initial={{ x: "-100%" }}
       animate={{ x: 0, transition: { duration: 0.5 } }}
       exit={{ x: "-100%", transition: { duration: 0.5 } }}
-      className="xl:hidden z-50 fixed inset-0 bg-gradient-to-r from-[#c12626] via-[#E50914] to-[#c12626] p-7 w-[80%] h-screen text-white"
+      className="xl:hidden z-50 fixed inset-0 bg-gradient-to-r from-[#c12626] via-[#E50914] to-[#c12626] p-7 w-[80%] lg:w-[60%] h-screen text-white"
     >
-      <Link
-        href="/"
-        className="flex justify-center items-center gap-5 lg:w-1/3"
-      >
+      <Link href="/" className="flex justify-center items-center gap-5">
         <Image
           src={"/images/general/logo-white.svg"}
           alt="logo"
@@ -31,7 +28,7 @@ const MainNavbarDrawer = (props: Proptypes) => {
         />
       </Link>
 
-      <SearchBar classname="mt-6" />
+      <SearchBar classname="md:hidden mt-6" />
 
       <div className="flex flex-col gap-5 mt-6">
         {NAV_ITEMS.map((item, index) => (
