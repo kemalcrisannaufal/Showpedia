@@ -1,11 +1,13 @@
 import Image from "next/image";
 import useCast from "./useCast";
 import Link from "next/link";
+import SearchCast from "./SearchCast";
 
 const Cast = () => {
   const { dataCast } = useCast();
   return (
     <>
+      <SearchCast />
       <div className="gap-5 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-9">
         {dataCast?.slice(0, 54).map((cast) => (
           <Link href={`/cast/${cast.id}`} key={cast.id} className="relative">

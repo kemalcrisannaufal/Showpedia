@@ -9,6 +9,9 @@ const castServices = {
     instance.get(`${ENDPOINT.CAST}/${id}/castcredits?embed=show`),
   getShowByCastAsGuest: (id: string) =>
     instance.get(`${ENDPOINT.CAST}/${id}/guestcastcredits?embed=episode`),
+
+  searchCast: (query: string) =>
+    instance.get(`/search${ENDPOINT.CAST}?q=${query}`),
 };
 
 export default castServices;

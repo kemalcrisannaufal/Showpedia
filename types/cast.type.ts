@@ -27,6 +27,11 @@ interface IPerson {
   };
 }
 
+interface IPersonSearch {
+  score: number;
+  person: IPerson;
+}
+
 interface ICharacter {
   id: string;
   url: string | null;
@@ -72,4 +77,4 @@ interface ICast {
   character: ICharacter;
 }
 
-export type { IPerson, ICharacter, ICast, ICastCredits };
+export type { IPerson, ICharacter, ICast, ICastCredits, IPersonSearch };

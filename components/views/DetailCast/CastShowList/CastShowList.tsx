@@ -155,7 +155,7 @@ const CastShowList = (props: Proptypes) => {
                     {castcredit.map((item) => (
                       <li key={item._embedded?.episode?.id} className="mb-1.5">
                         <button
-                          className="flex items-center gap-5 text-neutral-600 text-sm cursor-pointer"
+                          className="flex items-center gap-5 text-neutral-600 text-sm text-left cursor-pointer"
                           onClick={() =>
                             setDetailEpisode(item._embedded?.episode)
                           }
