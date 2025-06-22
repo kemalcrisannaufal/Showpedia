@@ -75,7 +75,7 @@ const ScheduleCard = (props: Proptypes) => {
           </div>
         </div>
       ) : (
-        <div className="bg-gray-300 shadow-md p-2 rounded-md w-full h-[150px] animate-pulse" />
+        <div className="bg-gray-300 shadow-md p-2 rounded-md w-full min-w-xs h-[150px] animate-pulse" />
       )}
 
       <AnimatePresence>

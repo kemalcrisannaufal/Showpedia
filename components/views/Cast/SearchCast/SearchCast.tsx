@@ -3,10 +3,17 @@ import useSearchCast from "./useSearchCast";
 import { getFormattedDate } from "@/utils/date";
 import Link from "next/link";
 import { FiX } from "react-icons/fi";
+import { AnimatePresence, motion } from "framer-motion";
 
 const SearchCast = () => {
-  const { search, handleSearch, dataSearch, handleClearSearch, inputRef } =
-    useSearchCast();
+  const {
+    search,
+    handleSearch,
+    dataSearch,
+    isLoadingSearch,
+    handleClearSearch,
+    inputRef,
+  } = useSearchCast();
 
   return (
     <div className="flex justify-between items-center mb-5">
@@ -31,42 +38,57 @@ const SearchCast = () => {
           )}
         </div>
 
-        {search !== "" && (
-          <div className="top-full z-50 absolute bg-white shadow-2xl shadow-neutral-500 mt-2 p-2 rounded-md w-full">
-            {dataSearch?.map((item) => (
-              <Link
-                href={`/cast/${item.person.id}`}
-                key={item.person.id}
-                className="flex gap-4 mb-2"
-              >
-                <div className="w-24 h-24 aspect-square">
-                  <Image
-                    src={
-                      item.person.image?.original ||
-                      item.person.image?.medium ||
-                      "/images/illustrations/img-not-found.jpg"
-                    }
-                    alt={item.person.name || "profile-image"}
-                    width={100}
-                    height={100}
-                    className="rounded-md w-full h-full object-cover"
-                  />
-                </div>
+        <AnimatePresence>
+          {search !== "" && !isLoadingSearch && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="top-full z-50 absolute bg-white shadow-2xl shadow-neutral-500 mt-2 p-2 rounded-md w-full"
+            >
+              {dataSearch && dataSearch.length > 0 ? (
+                dataSearch?.map((item) => (
+                  <Link
+                    href={`/cast/${item.person.id}`}
+                    key={item.person.id}
+                    className="flex gap-4 mb-2"
+                  >
+                    <div className="w-24 h-24 aspect-square">
+                      <Image
+                        src={
+                          item.person.image?.original ||
+                          item.person.image?.medium ||
+                          "/images/illustrations/img-not-found.jpg"
+                        }
+                        alt={item.person.name || "profile-image"}
+                        width={100}
+                        height={100}
+                        className="rounded-md w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-neutral-700 text-lg">
+                        {item.person.name}
+                      </h4>
+                      <p className="text-neutral-600 text-xs md:text-base line-clamp-2">
+                        {item.person.country?.name}
+                      </p>
+                      <p className="mt-1.5 text-neutral-600 text-xs md:text-sm">
+                        {getFormattedDate(item.person.birthday)}
+                      </p>
+                    </div>
+                  </Link>
+                ))
+              ) : (
                 <div>
-                  <h4 className="font-semibold text-neutral-700 text-lg">
-                    {item.person.name}
-                  </h4>
-                  <p className="text-neutral-600 text-xs md:text-base line-clamp-2">
-                    {item.person.country?.name}
-                  </p>
-                  <p className="mt-1.5 text-neutral-600 text-xs md:text-sm">
-                    {getFormattedDate(item.person.birthday)}
-                  </p>
+                  <strong>Cast Not Found</strong>. We couldn{"'"}t find cast
+                  matching {search}.
                 </div>
-              </Link>
-            ))}
-          </div>
-        )}
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ const BannerShowpedia = () => {
     <div
       className={cn(
         "bg-gradient-to-r from-[#B11226] via-[#E50914] to-[#B11226]",
-        "w-full h-full flex flex-col md:flex-row items-center justify-center gap-5 md:gap-10 relative p-5 md:py-10"
+        "w-full h-full flex flex-col md:flex-row items-center justify-center gap-5 md:gap-10 relative p-5 md:py-10 overflow-hidden rounded-xl"
       )}
     >
       <div

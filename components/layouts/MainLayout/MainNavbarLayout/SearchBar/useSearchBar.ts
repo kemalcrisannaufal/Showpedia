@@ -1,4 +1,4 @@
-import { DELAY } from "@/constants/list.constants";
+import { DEFAULT_SEARCH_RESULT, DELAY } from "@/constants/list.constants";
 import useDebounce from "@/hooks/useDebounce";
 import showServices from "@/services/show.services";
 import { ITVShowsSearch } from "@/types/tvshow.type";
@@ -12,7 +12,7 @@ const useSearchBar = () => {
 
   const searchByQuery = async (): Promise<ITVShowsSearch[]> => {
     const { data } = await showServices.searchByQuery(search);
-    return data.slice(0, 3);
+    return data.slice(0, DEFAULT_SEARCH_RESULT);
   };
 
   const handleSearch = (input: string) => {
