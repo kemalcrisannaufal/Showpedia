@@ -21,21 +21,23 @@ const SearchBar = (props: Proptypes) => {
   } = useSearchBar();
 
   return (
-    <div className={cn("relative  text-neutral-600", classname)}>
-      <div className="flex items-center bg-white px-4 py-1 border rounded-full">
+    <div
+      className={cn("relative  text-neutral-600 dark:text-white", classname)}
+    >
+      <div className="flex items-center bg-transparent px-4 py-1 border border-gray-400 rounded-full">
         <FiSearch className="mr-2 text-lg" />
         <input
           ref={inputRef}
           type="text"
           placeholder="Search title"
-          className="py-1 pr-3 focus:outline-none w-full text-neutral-700"
+          className="py-1 pr-3 focus:outline-none w-full"
           onChange={(e) => handleSearch(e.target.value)}
         />
 
         {search !== "" && (
           <button
             aria-label="btn clear"
-            className="block bg-gray-200 p-1 rounded-full cursor-pointer"
+            className="block bg-gray-200 dark:bg-gray-600 p-1 rounded-full dark:text-white cursor-pointer"
             onClick={handleClearSearch}
           >
             <FiX />

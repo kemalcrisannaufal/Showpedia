@@ -44,15 +44,15 @@ const CastList = (props: Proptypes) => {
                 />
                 <div className="xl:w-1/2">
                   <Link
-                    className="font-semibold text-neutral-700 text-xl hover:underline"
+                    className="font-semibold text-neutral-700 dark:text-white text-xl hover:underline"
                     href={`/cast/${cast.person.id}`}
                   >
                     {cast.person.name}
                   </Link>
-                  <p className="text-neutral-600 text-sm">
+                  <p className="text-neutral-600 dark:text-white text-sm">
                     as {cast.character.name}
                   </p>
-                  <p className="mt-2 text-neutral-700 text-sm">
+                  <p className="mt-2 text-neutral-700 dark:text-white text-sm">
                     {getFormattedDate(cast.person.birthday)}
                   </p>
 

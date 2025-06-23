@@ -18,19 +18,20 @@ const SearchCast = () => {
   return (
     <div className="flex justify-between items-center mb-5">
       <h1 className="font-semibold text-red-600 text-2xl">Cast</h1>
+
       <div className="relative w-2/3 md:w-1/3 xl:w-1/4">
         <div className="flex items-center gap-2 px-2 border border-gray-300 rounded-xl">
           <input
             ref={inputRef}
             placeholder="Search cast"
             type="text"
-            className="px-3 py-2 focus:outline-0 active:outline-0 focus:ring-0 active:ring-0 w-full text-neutral-600"
+            className="px-3 py-2 focus:outline-0 active:outline-0 focus:ring-0 active:ring-0 w-full text-neutral-600 dark:text-white"
             onChange={(e) => handleSearch(e.target.value)}
           />
 
           {search !== "" && (
             <button
-              className="bg-neutral-300 p-1 rounded-full text-neutral-700 cursor-pointer"
+              className="bg-neutral-300 dark:bg-gray-600 p-1 rounded-full text-neutral-700 dark:text-white cursor-pointer"
               onClick={handleClearSearch}
             >
               <FiX />

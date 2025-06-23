@@ -7,6 +7,10 @@ const useCastShowList = () => {
   const [detailEpisode, setDetailEpisode] = useState<IEpisode | undefined>(
     {} as IEpisode
   );
+  const [selectedCharacter, setSelectedCharacter] = useState({
+    show: "",
+    character: "",
+  });
 
   const handleShowAllOrLess = (numOfShow: number) => {
     if (maxIdxShow < numOfShow) {
@@ -22,6 +26,8 @@ const useCastShowList = () => {
     handleShowAllOrLess,
     detailEpisode,
     setDetailEpisode,
+    selectedCharacter,
+    setSelectedCharacter,
   };
 };
 

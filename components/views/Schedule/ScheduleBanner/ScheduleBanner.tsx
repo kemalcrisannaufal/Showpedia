@@ -4,7 +4,7 @@ const ScheduleBanner = () => {
   return (
     <section
       className={cn(
-        "bg-gradient-to-r from-[#7f1d1d] via-[#ef4444] to-[#7f1d1d]",
+        "bg-gradient-to-r from-[#7f1d1d] via-[#ef4444] to-[#7f1d1d] overflow-hidden",
         "mb-5 py-10 rounded-md text-white text-center relative p-5"
       )}
     >

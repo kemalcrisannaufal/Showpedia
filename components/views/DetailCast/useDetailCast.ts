@@ -6,10 +6,14 @@ import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { groupEpisodesByShow } from "@/utils/groupEpisode";
+import { DEFAULT_IDX_NOT_FOUND } from "@/constants/list.constants";
 
 const useDetailCast = () => {
   const { query, isReady } = useRouter();
   const [detailShow, setDetailShow] = useState<ITVShow>({} as ITVShow);
+  const [idSelectedShow, setIdSelectedShow] = useState<number>(
+    DEFAULT_IDX_NOT_FOUND
+  );
 
   const getCastData = async (): Promise<IPerson> => {
     const { data } = await castServices.getCastById(`${query.id}`);
@@ -42,6 +46,20 @@ const useDetailCast = () => {
     enabled: !!query.id && isReady,
   });
 
+  const getCastImageInShow = async (): Promise<{
+    medium: string | null;
+    original: string | null;
+  }> => {
+    const { data } = await showServices.getDetailShowById(`${idSelectedShow}`);
+    const dataShow = data as ITVShow;
+    return dataShow?._embedded?.cast.find(
+      (cast) => Number(cast.person.id) === Number(query.id)
+    )?.character.image as {
+      medium: string;
+      original: string;
+    };
+  };
+
   const {
     data: dataShowByCast,
     isLoading: isLoadingShowByCastData,
@@ -65,6 +83,15 @@ const useDetailCast = () => {
       enabled: !!query.id && isReady,
     });
 
+  const {
+    data: dataImageCharacterForSelectedShow,
+    isPending: isPendingImageCharacterForSelectedShow,
+  } = useQuery({
+    queryKey: ["getCastImageInShow", idSelectedShow],
+    queryFn: getCastImageInShow,
+    enabled: idSelectedShow !== -1,
+  });
+
   const groupCastEpisodesByShow = groupEpisodesByShow(dataShowByCastAsGuest);
 
   return {
@@ -79,6 +106,11 @@ const useDetailCast = () => {
     detailShow,
     setDetailShow,
     groupCastEpisodesByShow,
+
+    dataImageCharacterForSelectedShow,
+    isPendingImageCharacterForSelectedShow,
+    idSelectedShow,
+    setIdSelectedShow,
   };
 };
 

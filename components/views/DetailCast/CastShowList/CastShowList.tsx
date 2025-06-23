@@ -1,12 +1,15 @@
 import { ICastCredits } from "@/types/cast.type";
 import { IEpisode, ITVShow } from "@/types/tvshow.type";
-import { getIdShowByEpisode } from "@/utils/getId";
+import { getIdFromLink, getIdShowByEpisode } from "@/utils/getId";
 import Image from "next/image";
 import Link from "next/link";
 import { Dispatch, SetStateAction } from "react";
 import { FaChevronDown, FaChevronRight, FaChevronUp } from "react-icons/fa6";
 import useCastShowList from "./useCastShowList";
-import { DEFAULT_MAX_IDX_SHOW_BY_CAST } from "@/constants/list.constants";
+import {
+  DEFAULT_IDX_NOT_FOUND,
+  DEFAULT_MAX_IDX_SHOW_BY_CAST,
+} from "@/constants/list.constants";
 import Button from "@/components/ui/Button";
 import { motion } from "framer-motion";
 import Modal from "@/components/ui/Modal/Modal";
@@ -16,6 +19,10 @@ interface Proptypes {
   dataEpisodeList: IEpisode[][] | undefined;
   dataShowByCast: ICastCredits[] | undefined;
   dataCastAsGuestGroupByShow: Record<string, ICastCredits[]>;
+  setIdSelectedShow: Dispatch<SetStateAction<number>>;
+  dataImageCharacterForSelectedShow:
+    | { original: string | null; medium: string | null }
+    | undefined;
 }
 
 const CastShowList = (props: Proptypes) => {
@@ -24,10 +31,21 @@ const CastShowList = (props: Proptypes) => {
     setDetailShow,
     dataEpisodeList,
     dataCastAsGuestGroupByShow,
+    setIdSelectedShow,
+    dataImageCharacterForSelectedShow,
   } = props;
 
-  const { maxIdxShow, handleShowAllOrLess, detailEpisode, setDetailEpisode } =
-    useCastShowList();
+  const {
+    maxIdxShow,
+    handleShowAllOrLess,
+    detailEpisode,
+    setDetailEpisode,
+    selectedCharacter,
+    setSelectedCharacter,
+  } = useCastShowList();
+
+  const isCharacterShow =
+    dataImageCharacterForSelectedShow || selectedCharacter.character !== "";
 
   return (
     <>
@@ -75,7 +93,7 @@ const CastShowList = (props: Proptypes) => {
                 <div className="p-2 rounded-md w-full">
                   <div className="flex justify-between w-full">
                     <button
-                      className="block font-semibold text-neutral-700 text-xl text-left hover:underline underline-offset-2 transition-all duration-300 cursor-pointer"
+                      className="block font-semibold text-neutral-700 dark:text-white text-xl text-left hover:underline underline-offset-2 transition-all duration-300 cursor-pointer"
                       onClick={() =>
                         setDetailShow(data._embedded?.show || ({} as ITVShow))
                       }
@@ -92,12 +110,26 @@ const CastShowList = (props: Proptypes) => {
                     )}
                   </div>
 
-                  <span className="mt-3 text-md text-neutral-600">
-                    as {data._links?.character?.name}
-                  </span>
+                  <div className="mt-3 text-md text-neutral-600 dark:text-neutral-200">
+                    as{" "}
+                    <button
+                      className="underline underline-offset-2 cursor-pointer"
+                      onClick={() => {
+                        setIdSelectedShow(
+                          getIdFromLink(data._links?.show?.href)
+                        );
+                        setSelectedCharacter({
+                          show: data._links?.show?.name || "",
+                          character: data._links?.character?.name || "",
+                        });
+                      }}
+                    >
+                      {data._links?.character?.name}
+                    </button>
+                  </div>
 
                   <p
-                    className="mt-3 text-neutral-600 text-sm line-clamp-2 leading-5 md:leading-7"
+                    className="mt-3 text-neutral-600 dark:text-neutral-200 text-sm line-clamp-2 leading-5 md:leading-7"
                     dangerouslySetInnerHTML={{
                       __html:
                         data._embedded?.show?.summary ||
@@ -147,7 +179,7 @@ const CastShowList = (props: Proptypes) => {
                     href={`/shows/${getIdShowByEpisode(
                       castcredit[0]._embedded?.episode
                     )}`}
-                    className="block bg-gray-300 px-3 md:px-5 py-2 rounded-md w-full font-medium text-neutral-700"
+                    className="block bg-gray-300 dark:bg-gray-600 px-3 md:px-5 py-2 rounded-md w-full font-medium text-neutral-700 dark:text-white"
                   >
                     {showname}
                   </Link>
@@ -155,7 +187,7 @@ const CastShowList = (props: Proptypes) => {
                     {castcredit.map((item) => (
                       <li key={item._embedded?.episode?.id} className="mb-1.5">
                         <button
-                          className="flex items-center gap-5 text-neutral-600 text-sm text-left cursor-pointer"
+                          className="flex items-center gap-5 text-neutral-600 dark:text-neutral-200 text-sm text-left cursor-pointer"
                           onClick={() =>
                             setDetailEpisode(item._embedded?.episode)
                           }
@@ -220,6 +252,38 @@ const CastShowList = (props: Proptypes) => {
                   }}
                 />
               </div>
+            </div>
+          </div>
+        </Modal>
+      )}
+
+      {/* Image For Selected Character */}
+      {isCharacterShow && (
+        <Modal
+          onClose={() => {
+            setIdSelectedShow(DEFAULT_IDX_NOT_FOUND);
+            setSelectedCharacter({ show: "", character: "" });
+          }}
+        >
+          <div className="flex items-center gap-5 p-5">
+            <Image
+              src={
+                dataImageCharacterForSelectedShow?.original ||
+                dataImageCharacterForSelectedShow?.medium ||
+                "/images/illustrations/img-not-found.jpg"
+              }
+              alt="character-image"
+              width={500}
+              height={500}
+              className="rounded-md w-32 md:w-64 h-40 md:h-80 object-center object-cover"
+            />
+            <div>
+              <p className="font-semibold text-neutral-700 dark:text-white text-lg md:text-xl lg:text-2xl">
+                {selectedCharacter.show}
+              </p>
+              <p className="mt-3 text-neutral-600 dark:text-neutral-200 md:text-lg">
+                {selectedCharacter.character}
+              </p>
             </div>
           </div>
         </Modal>

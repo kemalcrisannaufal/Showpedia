@@ -22,13 +22,13 @@ const DetailShow = () => {
                 dangerouslySetInnerHTML={{
                   __html: dataDetailShow?.summary || "Summary is not available",
                 }}
-                className="mt-2 text-md text-neutral-600 text-justify"
+                className="mt-2 text-md text-neutral-600 dark:text-neutral-200 text-justify"
               />
 
               <h2 className="my-3 font-bold text-red-600 text-xl">
                 Information
               </h2>
-              <ul className="flex flex-col gap-1 text-neutral-700">
+              <ul className="flex flex-col gap-1 text-neutral-700 dark:text-neutral-200">
                 <li>
                   Average Rating:{" "}
                   <span className="font-medium">
@@ -80,7 +80,7 @@ const DetailShow = () => {
           </div>
 
           <div className="relative md:w-1/4">
-            <div className="top-16 sticky">
+            <div className="top-20 sticky">
               <Image
                 src={
                   dataDetailShow?.image?.original ||
@@ -94,7 +94,7 @@ const DetailShow = () => {
               />
               <Link
                 href={dataDetailShow.officialSite || "/"}
-                className="flex justify-center items-center bg-white hover:bg-red-600 mt-2 p-2 border border-red-600 rounded-lg w-full text-red-600 hover:text-white transition-colors duration-300"
+                className="flex justify-center items-center bg-white hover:bg-red-600 dark:bg-gray-900 mt-2 p-2 border rounded-lg w-full text-red-600 hover:text-white dark:text-neutral-200 transition-colors duration-300"
               >
                 Official Site
               </Link>
@@ -106,12 +106,12 @@ const DetailShow = () => {
           <div className="flex md:flex-row flex-col-reverse gap-2 min-h-screen animate-pulse">
             <div className="md:px-10 rounded-md md:w-3/4 h-max">
               <div>
-                <div className="bg-gray-300 mb-2 rounded-lg w-[90%] h-12" />
+                <div className="bg-gray-300 dark:bg-gray-600 mb-2 rounded-lg w-[90%] h-12" />
                 {Array.from({ length: 15 }).map((_, index) => (
                   <div
                     key={index}
                     className={cn(
-                      `bg-gray-300 my-2 rounded-lg w-full h-6`,
+                      `bg-gray-300 dark:bg-gray-600 my-2 rounded-lg w-full h-6`,
                       index % 5 === 0 && "mb-5"
                     )}
                   />
@@ -122,7 +122,7 @@ const DetailShow = () => {
                   {Array.from({ length: 9 }).map((_, index) => (
                     <div
                       key={index}
-                      className={`bg-gray-300 my-2 rounded-lg w-full h-[200px]`}
+                      className={`bg-gray-300 dark:bg-gray-600 my-2 rounded-lg w-full h-[200px]`}
                     />
                   ))}
                 </div>
@@ -130,7 +130,7 @@ const DetailShow = () => {
                 <div className="mb-10" />
               </div>
             </div>
-            <div className="bg-gray-300 mb-2 rounded-md md:w-1/4 h-[300px] xl:h-[450px] animate-pulse" />
+            <div className="bg-gray-300 dark:bg-gray-600 mb-2 rounded-md md:w-1/4 h-[300px] xl:h-[450px] animate-pulse" />
           </div>
         </div>
       )}

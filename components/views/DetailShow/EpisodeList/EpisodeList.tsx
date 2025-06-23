@@ -47,7 +47,7 @@ const EpisodeList = (props: Proptypes) => {
                           className="block rounded-lg w-full md:w-[160px] h-[180px] md:h-[120px] object-cover aspect-video"
                         />
                       ) : (
-                        <div className="flex flex-col justify-center items-center bg-gray-300 rounded-lg w-full md:w-[160px] h-[180px] md:h-[120px] aspect-video">
+                        <div className="flex flex-col justify-center items-center bg-gray-300 dark:bg-gray-600 rounded-lg w-full md:w-[160px] h-[180px] md:h-[120px] aspect-video">
                           <Image
                             src={`/images/general/logo-white.svg`}
                             alt={`Showpedia`}
@@ -63,10 +63,10 @@ const EpisodeList = (props: Proptypes) => {
                       <div className="w-full">
                         <div className="flex justify-between items-start gap-2 w-full">
                           <div>
-                            <p className="font-bold text-neutral-700">
+                            <p className="font-bold text-neutral-700 dark:text-white">
                               Episode {episode.number} - {episode.name}
                             </p>
-                            <div className="flex items-center gap-5 text-neutral-600 text-sm">
+                            <div className="flex items-center gap-5 text-neutral-600 dark:text-neutral-200 text-sm">
                               <p>{getFormattedDate(`${episode.airdate}`)}</p>
                               <p>{episode.runtime} Minutes</p>
                             </div>
@@ -98,7 +98,7 @@ const EpisodeList = (props: Proptypes) => {
                               >
                                 <p
                                   className={cn(
-                                    "mt-2 text-neutral-700 text-sm text-justify",
+                                    "mt-2 text-neutral-700 text-sm text-justify dark:text-neutral-300",
                                     !expandedDescription[episode.id] &&
                                       "line-clamp-3"
                                   )}
@@ -123,7 +123,7 @@ const EpisodeList = (props: Proptypes) => {
                             )}
                           </>
                         ) : (
-                          <p className="mt-2 text-neutral-700 text-sm text-justify">
+                          <p className="mt-2 text-neutral-700 dark:text-neutral-200 text-sm text-justify">
                             No description available
                           </p>
                         )}

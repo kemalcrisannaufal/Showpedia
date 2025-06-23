@@ -21,7 +21,7 @@ const ScheduleCard = (props: Proptypes) => {
       {!isLoading ? (
         <div
           className={cn(
-            "bg-red-100/10 shadow-md p-2 md:px-3 border-2 border-red-300 rounded-md",
+            "bg-red-100/10 dark:bg-gray-900 shadow-md p-2 md:px-3 border-2 border-red-300 rounded-md",
             classname
           )}
         >
@@ -46,11 +46,11 @@ const ScheduleCard = (props: Proptypes) => {
               <p className="font-semibold text-red-600 text-lg lg:text-2xl line-clamp-2">
                 {data.show.name}
               </p>
-              <div className="bg-amber-500/50 mt-1 px-3 py-1 rounded-lg w-max font-semibold text-xs">
+              <div className="bg-amber-500/50 dark:bg-red-600 mt-1 px-3 py-1 rounded-lg w-max font-semibold text-xs">
                 {data.show.type}
               </div>
 
-              <div className="flex flex-col gap-1 text-neutral-600 md:text-md text-sm">
+              <div className="flex flex-col gap-1 text-neutral-600 md:text-md dark:text-neutral-200 text-sm">
                 <div className="flex items-center gap-2 mt-2">
                   <p>Season {data.season}</p>
                   <span>|</span>
@@ -60,11 +60,13 @@ const ScheduleCard = (props: Proptypes) => {
                 {showSummary && (
                   <p
                     className="line-clamp-2"
-                    dangerouslySetInnerHTML={{ __html: `${data.show.summary}` }}
+                    dangerouslySetInnerHTML={{
+                      __html: data.show.summary || "Summary is not available",
+                    }}
                   />
                 )}
 
-                <div className="flex items-center gap-2 font-semibold text-sky-800">
+                <div className="flex items-center gap-2 font-semibold text-sky-800 dark:text-neutral-200">
                   <p>{getFormattedDate(`${data.airdate}`)}</p>
                   <p>&#8226;</p>
                   <p>{data.airtime}</p>
@@ -75,7 +77,7 @@ const ScheduleCard = (props: Proptypes) => {
           </div>
         </div>
       ) : (
-        <div className="bg-gray-300 shadow-md p-2 rounded-md w-full min-w-xs h-[150px] animate-pulse" />
+        <div className="bg-gray-300 dark:bg-gray-600 shadow-md p-2 rounded-md w-full min-w-xs h-[150px] animate-pulse" />
       )}
 
       <AnimatePresence>

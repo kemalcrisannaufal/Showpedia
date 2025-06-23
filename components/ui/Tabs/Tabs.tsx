@@ -14,14 +14,16 @@ const Tabs = ({ children, tabsHeader }: Proptypes) => {
 
   return (
     <>
-      <div className="relative flex flex-wrap bg-gray-200 rounded-md w-full">
+      <div className="relative flex flex-wrap bg-gray-200 dark:bg-gray-900 rounded-md w-full">
         {tabsHeader.map((tab, index) => (
           <button
             key={index}
             onClick={() => setActiveIdx(index)}
             className={cn(
               "relative flex-1 py-2 px-4 text-center font-medium z-10 transition-all cursor-pointer text-xs md:text-sm border border-white lg:border-none",
-              activeIdx === index ? "text-white" : "text-gray-700"
+              activeIdx === index
+                ? "text-white"
+                : "text-gray-700 dark:text-neutral-200"
             )}
           >
             {tab}

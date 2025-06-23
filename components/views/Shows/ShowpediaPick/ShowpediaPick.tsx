@@ -28,7 +28,7 @@ const ShowpediaPick = ({ shows }: Proptypes) => {
             classname="mb-2 md:mb-5 font-bold text-transparent bg-gradient-to-r bg-clip-text via-[#B11226] from-[#E50914] to-[#E50914] text-3xl md:text-4xl lg:text-5xl min-h-8 md:min-h-12 w-full"
             text="Showpedia Pick"
           />
-          <p className="text-md text-neutral-600">
+          <p className="text-md text-neutral-600 dark:text-white">
             Recommended shows chosen by Showpedia. Explore the top picks with
             visuals and details.
           </p>

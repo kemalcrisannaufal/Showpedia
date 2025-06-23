@@ -26,7 +26,7 @@ const Button = (props: Proptypes) => {
       className={cn(
         "bg-red-600 hover:bg-red-500 px-3 py-2 rounded-md text-white transition-colors duration-300 ease-in-out cursor-pointer",
         variant === "secondary" &&
-          "bg-white border text-red-600 hover:text-white hover:bg-red-600",
+          "bg-white border text-red-600 hover:text-white hover:bg-red-600 dark:bg-gray-900 dark:text-white",
         fullWidth && "w-full",
         classname
       )}

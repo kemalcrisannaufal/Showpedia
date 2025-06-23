@@ -29,7 +29,7 @@ const Modal = (props: Proptypes) => {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1, transition: { duration: 0.4 } }}
         exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.4 } }}
-        className="relative bg-white md:rounded-lg rounded-t-xl w-full max-w-xl max-h-[80vh] overflow-y-auto scrollbar-hide"
+        className="relative bg-white dark:bg-slate-800 md:rounded-lg rounded-t-xl w-full max-w-xl max-h-[80vh] overflow-y-auto scrollbar-hide"
         ref={ref}
       >
         {children}

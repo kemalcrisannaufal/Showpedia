@@ -11,7 +11,7 @@ interface Proptypes {
 const ProfileImageCast = (props: Proptypes) => {
   const { dataCast, dataCastAsGuestGroupByShow, dataShowByCast } = props;
   return (
-    <div className="xl:top-14 xl:sticky w-full md:w-1/3 xl:w-1/4 h-max">
+    <div className="xl:top-20 xl:sticky w-full md:w-1/3 xl:w-1/4 h-max">
       <div className="relative">
         <Image
           src={
@@ -38,8 +38,8 @@ const ProfileImageCast = (props: Proptypes) => {
           )}
         </div>
       </div>
-      <div className="bg-gray-200 mt-4 p-2 rounded-md">
-        <p className="text-neutral-600 text-sm leading-6">
+      <div className="bg-gray-200 dark:bg-gray-600 mt-4 p-2 rounded-md">
+        <p className="text-neutral-600 dark:text-neutral-200 text-sm leading-6">
           <span className="font-semibold">{dataCast?.name}</span> is a{" "}
           {dataCast?.gender?.toLowerCase() === "male" ? "male" : "female"} actor
           from {dataCast?.country?.name}.{" "}

@@ -19,7 +19,7 @@ const ScheduleFilter = (props: Proptypes) => {
   }));
 
   return (
-    <div className="mb-5 p-3 xl:p-5 border border-red-600 rounded-lg xl:w-1/3 h-max">
+    <div className="dark:bg-gray-900 mb-5 p-3 xl:p-5 border dark:border-white border-red-600 rounded-lg xl:w-1/3 h-max">
       <h3 className="mb-1.5 md:mb-3 font-semibold text-red-600 text-lg md:text-xl">
         Filter
       </h3>
@@ -44,7 +44,7 @@ const ScheduleFilter = (props: Proptypes) => {
             menuPlacement="auto"
             menuShouldScrollIntoView={false}
             maxMenuHeight={250}
-            className="z-20 bg-white text-gray-900"
+            className="z-20 bg-white rounded-md text-gray-900"
           />
         </div>
 
@@ -63,7 +63,7 @@ const ScheduleFilter = (props: Proptypes) => {
                 date: date?.toISOString().split("T")[0] || "",
               })
             }
-            className="block z-50 p-2 border border-gray-200 rounded-md w-full text-neutral-700"
+            className="block z-50 p-2 border border-gray-200 rounded-md w-full text-neutral-700 dark:text-white"
           />
         </div>
         <div className="flex justify-end w-full">

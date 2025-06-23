@@ -33,7 +33,7 @@ const TVShowPreviewModal = (props: Proptypes) => {
               {tvShow.genres?.map((genre, index) => (
                 <div
                   key={index}
-                  className="bg-red-200/50 px-2 py-1 border rounded-md font-medium text-red-600 text-xs"
+                  className="bg-red-200/50 dark:bg-red-600 px-2 py-1 border rounded-md font-medium text-red-600 dark:text-neutral-200 text-xs"
                 >
                   {genre}
                 </div>
@@ -43,7 +43,7 @@ const TVShowPreviewModal = (props: Proptypes) => {
               dangerouslySetInnerHTML={{
                 __html: tvShow.summary || "Summary is not available",
               }}
-              className="mt-3 text-neutral-700 text-xs md:text-sm line-clamp-4 md:line-clamp-3 leading-relaxed"
+              className="mt-3 text-neutral-700 dark:text-white text-xs md:text-sm line-clamp-4 md:line-clamp-3 leading-relaxed"
             />
           </div>
 

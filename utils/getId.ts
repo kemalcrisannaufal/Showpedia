@@ -1,6 +1,6 @@
 import { IEpisode } from "@/types/tvshow.type";
 
-const getIdShowByEpisode = (data: IEpisode | undefined) => {
+const getIdShowByEpisode = (data: IEpisode | null | undefined) => {
   if (typeof data === "undefined") {
     return;
   }
@@ -10,4 +10,12 @@ const getIdShowByEpisode = (data: IEpisode | undefined) => {
   ];
 };
 
-export { getIdShowByEpisode };
+const getIdFromLink = (link: string | null | undefined): number => {
+  if (typeof link === "undefined") {
+    return -1;
+  }
+
+  return Number(link?.split("/")[link?.split("/").length - 1]);
+};
+
+export { getIdShowByEpisode, getIdFromLink };

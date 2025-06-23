@@ -12,9 +12,9 @@ const DetailCast = () => {
     detailShow,
     setDetailShow,
     groupCastEpisodesByShow,
+    setIdSelectedShow,
+    dataImageCharacterForSelectedShow,
   } = useDetailCast();
-
-  console.log(groupCastEpisodesByShow);
 
   return (
     <>
@@ -31,6 +31,10 @@ const DetailCast = () => {
             dataEpisodeList={dataEpisodeList}
             setDetailShow={setDetailShow}
             dataCastAsGuestGroupByShow={groupCastEpisodesByShow}
+            setIdSelectedShow={setIdSelectedShow}
+            dataImageCharacterForSelectedShow={
+              dataImageCharacterForSelectedShow
+            }
           />
         </div>
       </div>

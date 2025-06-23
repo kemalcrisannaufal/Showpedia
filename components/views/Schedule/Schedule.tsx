@@ -52,7 +52,7 @@ const Schedule = () => {
                             data={schedule}
                             isLoading={isLoadingSchedule}
                             showSummary
-                            classname="border-none shadow-none"
+                            classname="border-none shadow-none mb-2"
                           />
                         ))}
 
